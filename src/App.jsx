@@ -6,6 +6,7 @@ import {
   Checkbox,
   CircularProgress,
   Container,
+  CssBaseline,
   FormControl,
   InputLabel,
   ListItemText,
@@ -16,6 +17,8 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './theme/theme.js';
 
 // Minimal admin host:
 // - One page (catch-all route) that always renders Wishlist and optionally renders other MFEs.
@@ -267,12 +270,14 @@ function AdminHome() {
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Catch-all: keep admin shell minimal while avoiding 404s when MFEs navigate. */}
-        <Route path="*" element={<AdminHome />} />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Routes>
+          <Route path="*" element={<AdminHome />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
