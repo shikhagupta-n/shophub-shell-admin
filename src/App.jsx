@@ -93,6 +93,10 @@ function AdminHome() {
   // Minimal state/handlers to satisfy MFE contracts.
   const [wishlistItems, setWishlistItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const adminUser = useMemo(
+    () => ({ name: 'Admin', email: 'admin@shophub.dev', role: 'ADMIN', permissions: ['EDIT', 'VIEW_WISHLIST_META'] }),
+    [],
+  );
 
   const addToCart = async (product) => {
     setCartItems((prev) => {
@@ -115,7 +119,11 @@ function AdminHome() {
 
   const removeFromWishlist = (productId) => setWishlistItems((prev) => prev.filter((x) => x?.id !== productId));
   const clearWishlist = () => setWishlistItems([]);
-  const addToWishlist = (product) => setWishlistItems((prev) => (prev.some((x) => x?.id === product?.id) ? prev : [product, ...prev]));
+  const addToWishlist = (product) =>
+    setWishlistItems((prev) => {
+      if (prev.some((x) => x?.id === product?.id)) return prev;
+      return [{ ...product, addedBy: adminUser }, ...prev];
+    });
   const isInWishlist = (productId) => wishlistItems.some((x) => x?.id === productId);
 
   const showSuccess = (message) => {
@@ -238,6 +246,7 @@ function AdminHome() {
                   addToCart={addToCart}
                   showError={showError}
                   showSuccess={showSuccess}
+                  currentUser={adminUser}
                 />
               </Suspense>
             </Section>
