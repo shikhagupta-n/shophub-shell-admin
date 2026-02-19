@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopHub</title>
+  <!-- Zipy (optional) -->
+  <!-- Reason: enables Zipy to capture errors + map stack traces using uploaded sourcemaps. -->
+  <script src="<%= htmlWebpackPlugin.options.zipySdkUrl %>" crossorigin="anonymous"></script>
+  <script>
+    // Zipy init (optional).
+    // Reason: initialize only when a project key is provided (local dev and forks can omit secrets).
+    if (window.zipy && "<%= htmlWebpackPlugin.options.zipyProjectKey %>") {
+      window.zipy.init("<%= htmlWebpackPlugin.options.zipyProjectKey %>", { releaseVer: "<%= htmlWebpackPlugin.options.zipyReleaseVer %>" });
+    }
+  </script>
+  <script>
+    // Identify the host app for MFEs.
+    // Reason: MFEs (e.g. wishlist) can enable admin-only diagnostics without hardcoding domains.
+    window.__SHOPHUB_APP__ = 'admin';
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- Webpack will inject the JS bundle here via HtmlWebpackPlugin. -->
+</body>
+
+</html>
+
