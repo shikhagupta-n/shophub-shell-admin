@@ -166,6 +166,17 @@ export const theme = createTheme({
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            pointerEvents: 'none',
+          },
+        },
+      },
+    },
   },
 });
 
