@@ -38,19 +38,19 @@ module.exports = (_env, argv) => {
   // Reason: make `npm run build` outputs deployable without additional config.
   const authRemoteUrl =
     process.env.SHOPHUB_AUTH_REMOTE_URL ??
-    (isProd ? 'https://shophub-auth.netlify.app/remoteEntry.js' : 'http://localhost:5174/remoteEntry.js');
+    (isProd ? 'https://shophub-auth-2.netlify.app/remoteEntry.js' : 'http://localhost:5174/remoteEntry.js');
   const catalogRemoteUrl =
     process.env.SHOPHUB_CATALOG_REMOTE_URL ??
-    (isProd ? 'https://shophub-catalog.netlify.app/remoteEntry.js' : 'http://localhost:5175/remoteEntry.js');
+    (isProd ? 'https://shophub-catalog-2.netlify.app/remoteEntry.js' : 'http://localhost:5175/remoteEntry.js');
   const checkoutRemoteUrl =
     process.env.SHOPHUB_CHECKOUT_REMOTE_URL ??
-    (isProd ? 'https://shophub-checkout.netlify.app/remoteEntry.js' : 'http://localhost:5176/remoteEntry.js');
+    (isProd ? 'https://shophub-checkout-2.netlify.app/remoteEntry.js' : 'http://localhost:5176/remoteEntry.js');
   const wishlistRemoteUrl =
     process.env.SHOPHUB_WISHLIST_REMOTE_URL ??
-    (isProd ? 'https://shophub-wishlist.netlify.app/remoteEntry.js' : 'http://localhost:5177/remoteEntry.js');
+    (isProd ? 'https://shophub-wishlist-2.netlify.app/remoteEntry.js' : 'http://localhost:5177/remoteEntry.js');
   const accountRemoteUrl =
     process.env.SHOPHUB_ACCOUNT_REMOTE_URL ??
-    (isProd ? 'https://shophub-account.netlify.app/remoteEntry.js' : 'http://localhost:5178/remoteEntry.js');
+    (isProd ? 'https://shophub-account-2.netlify.app/remoteEntry.js' : 'http://localhost:5178/remoteEntry.js');
 
   const mfRemotes = {
     auth: `auth@${authRemoteUrl}`,
